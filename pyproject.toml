@@ -12,7 +12,8 @@ description = "Plus version of MCP server for accessing RedNote"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "mcp[cli]"
+    "mcp[cli]",
+    "playwright"
 ]
 
 [project.scripts]
