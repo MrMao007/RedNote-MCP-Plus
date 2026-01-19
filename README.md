@@ -5,7 +5,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![PyPI version](https://badge.fury.io/py/rednote_mcp_plus.svg)](https://badge.fury.io/py/rednote_mcp_plus)
 
-plus version of MCP server for accessing RedNote(XiaoHongShu, xhs).
+MCP server with a more comprehensive suite of tools for RedNote(XiaoHongShu, xhs).
+
 ```
 brew install uv
 brew install node
@@ -21,8 +22,7 @@ playwright install
     "RedNote_MCP_Plus": {
       "command": "uvx",
       "args": [
-        "rednote_mcp_plus",
-        "--stdio"
+        "rednote_mcp_plus"
       ]
     }
   }
