@@ -10,7 +10,7 @@ mcp = FastMCP()
 @mcp.tool()
 async def manualLogin():
     """
-    登录小红书账号，获取登录Cookies
+    登录小红书账号，获取登录Cookies，保存登录态
     注意：需要手动操作成功登录，并且关闭浏览器后才会保存Cookies
     """
     result = await login.manualLogin()
