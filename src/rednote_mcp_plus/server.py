@@ -2,6 +2,8 @@ from mcp.server.fastmcp import FastMCP
 
 from rednote_mcp_plus.write import publish
 from rednote_mcp_plus.auth import login
+from rednote_mcp_plus.write import interaction
+from rednote_mcp_plus.read import search
 from typing import Annotated, List
 import asyncio
 
@@ -32,6 +34,56 @@ async def publishText(
     :return: 发布结果
     """
     result = await publish.publishText(image_urls, title, content, tags)
+    return result
+
+@mcp.tool()
+async def likeNote(
+    noteUrl: Annotated[str, "笔记URL"]
+) -> str:
+    """
+    点赞小红书笔记
+    :param noteUrl: 笔记URL
+    :return: 点赞结果
+    """
+    result = await interaction.likeNote(noteUrl)
+    return result
+
+@mcp.tool()
+async def collectNote(
+    noteUrl: Annotated[str, "笔记URL"]
+) -> str:
+    """
+    收藏小红书笔记
+    :param noteUrl: 笔记URL
+    :return: 收藏结果
+    """
+    result = await interaction.collectNote(noteUrl)
+    return result
+
+@mcp.tool()
+async def commentNote(
+    noteUrl: Annotated[str, "笔记URL"],
+    commentText: Annotated[str, "评论内容"]
+) -> str:
+    """
+    评论小红书笔记
+    :param noteUrl: 笔记URL
+    :param commentText: 评论内容
+    :return: 评论结果
+    """
+    result = await interaction.commentNote(noteUrl, commentText)
+    return result
+
+@mcp.tool()
+async def followUser(
+    noteUrl: Annotated[str, "笔记URL"]
+) -> str:
+    """
+    关注小红书用户
+    :param noteUrl: 笔记URL
+    :return: 关注结果
+    """
+    result = await interaction.followUser(noteUrl)
     return result
 
 if __name__ == "__main__":

@@ -5,11 +5,10 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![PyPI version](https://badge.fury.io/py/rednote_mcp_plus.svg)](https://badge.fury.io/py/rednote_mcp_plus)
 
-MCP server with a more comprehensive suite of tools for RedNote(XiaoHongShu, xhs).
+⚙️ MCP server with a more comprehensive suite of tools for RedNote(XiaoHongShu, xhs).
 
 ```
 brew install uv
-brew install node
 pip install playwright
 playwright install
 ```
@@ -30,6 +29,11 @@ playwright install
 ```
 
 ## MCP Inspector
+
+```
+brew install node
+```
+
 
 ```
 npx @modelcontextprotocol/inspector uvx rednote_mcp_plus
