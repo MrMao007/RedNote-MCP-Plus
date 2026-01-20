@@ -34,15 +34,9 @@ async def dumpNote(noteUrl: str) -> str:
         json_data = json.loads(note_data)
         markdown_content = generate_rednote_markdown(json_data)
 
-        with open('red_note.md', 'w', encoding='utf-8') as f:
-            f.write(markdown_content)
+        # with open('red_note.md', 'w', encoding='utf-8') as f:
+        #     f.write(markdown_content)
 
-        # try:
-        #     # 无限等待，直到页面被关闭
-        #     await page.wait_for_event("close", timeout=0)
-        # except Exception as e:
-        #     print(f"等待过程中断: {e}")
-        # finally:
         await context.close()
         await browser.close()
             
@@ -69,15 +63,11 @@ def generate_rednote_markdown(json_data):
     # 生成 Markdown
     markdown = f"""# {title}
 
----
-
 <div align="center">
 <img src="{avatar}" width="50" style="border-radius: 50%;" />
 
 **{nickname}**
 </div>
-
----
 
 """
     
@@ -87,8 +77,6 @@ def generate_rednote_markdown(json_data):
 
 [点击查看视频]({video_url})
 
----
-
 """ 
     if note_type == "normal" and images:
         markdown += """## 🖼️ 图片
@@ -96,18 +84,13 @@ def generate_rednote_markdown(json_data):
 """
         for idx, img_url in enumerate(images, 1):
             markdown += f"![图片{idx}]({img_url})\n\n"
-        markdown += "---\n\n"
     
     # 添加互动数据
     markdown += f"""
 
----
-
 ## 📝 正文
 
 {desc}
-
----
 
 ## 🏷️ 标签
 
@@ -118,8 +101,6 @@ def generate_rednote_markdown(json_data):
 | 👍 点赞 | ⭐ 收藏 | 💬 评论 | 🔗 分享 |
 |:---:|:---:|:---:|:---:|
 | {liked_count} | {collected_count} | {comment_count} | {share_count} |
-
----
 
 ## ℹ️ 其他信息
 
