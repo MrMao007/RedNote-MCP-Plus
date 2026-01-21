@@ -34,9 +34,6 @@ async def dumpNote(noteUrl: str) -> str:
         json_data = json.loads(note_data)
         markdown_content = generate_rednote_markdown(json_data)
 
-        # with open('red_note.md', 'w', encoding='utf-8') as f:
-        #     f.write(markdown_content)
-
         await context.close()
         await browser.close()
             
@@ -75,7 +72,16 @@ def generate_rednote_markdown(json_data):
     if note_type == "video" and video_url:
         markdown += f"""## 🎬 视频
 
-[点击查看视频]({video_url})
+<div style="position: relative; width: 100%; padding-top: 56.25%;">
+    <iframe 
+        src="{video_url}" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        scrolling="no" 
+        border="0" 
+        frameborder="no" 
+        allowfullscreen="true">
+    </iframe>
+</div>
 
 """ 
     if note_type == "normal" and images:

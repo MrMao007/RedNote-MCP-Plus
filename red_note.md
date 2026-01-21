@@ -8,7 +8,16 @@
 
 ## 🎬 视频
 
-[点击查看视频](http://sns-video-hs.xhscdn.com/stream/1/110/259/01e9650db30723c8010370039bb2bfe547_259.mp4)
+<div style="position: relative; width: 100%; padding-top: 56.25%;">
+    <iframe 
+        src="http://sns-video-qc.xhscdn.com/stream/1/110/259/01e9650db30723c8010370039bb2bfe547_259.mp4?sign=4202ed58b480ba3eadca83412daca940&t=6973dd78" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        scrolling="no" 
+        border="0" 
+        frameborder="no" 
+        allowfullscreen="true">
+    </iframe>
+</div>
 
 
 

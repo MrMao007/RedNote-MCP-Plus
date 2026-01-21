@@ -5,7 +5,6 @@ from rednote_mcp_plus.auth import login
 from rednote_mcp_plus.write import interaction
 from rednote_mcp_plus.read import dump, search
 from typing import Annotated, List
-import asyncio
 
 mcp = FastMCP()
 

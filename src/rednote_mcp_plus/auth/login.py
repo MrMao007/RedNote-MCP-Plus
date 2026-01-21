@@ -23,7 +23,7 @@ async def manualLogin() -> str:
         context = await browser.new_context()
         
         # 监听context关闭事件
-        context.on("close", lambda: asyncio.create_task(save_cookies(context)))
+        context.on("close", lambda: asyncio.create_task(save_cookies(context))) # type: ignore
         
         page = await context.new_page()
         print("🌐 导航到小红书登录页面...")
