@@ -1,6 +1,6 @@
 # RedNote-MCP-Plus
 
-<p align="center"><img src= "logo.png" width="600"/></p>
+<p align="center"><img src= "img/logo.png" width="600"/></p>
 
 [![English](https://img.shields.io/badge/English-Click-yellow)](docs/README.en.md)
 [![简体中文](https://img.shields.io/badge/简体中文-点击查看-orange)](README.md)
