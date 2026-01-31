@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rednote_mcp_plus"
-version = "0.6.0"
+version = "0.7.0"
 authors = [
     {name = "MrMao007", email = "mty1209@gmail.com"}
 ]
@@ -12,8 +12,7 @@ description = "Plus version of MCP server for accessing RedNote"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "mcp[cli]",
-    "playwright"
+    "mcp[cli]"
 ]
 
 [project.scripts]
