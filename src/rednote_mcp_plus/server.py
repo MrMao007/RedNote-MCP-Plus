@@ -3,7 +3,7 @@ from mcp.server.fastmcp import FastMCP
 from rednote_mcp_plus.write import publish
 from rednote_mcp_plus.auth import login
 from rednote_mcp_plus.write import interaction
-from rednote_mcp_plus.read import dump, search
+from rednote_mcp_plus.read import dump, dump_user, search
 from typing import Annotated, List
 
 mcp = FastMCP()
@@ -93,6 +93,18 @@ async def dumpNote(
     :return: 笔记的Markdown内容
     """
     result = await dump.dumpNote(noteUrl)
+    return result
+
+@mcp.tool()
+async def dumpUser(
+    userUrl: Annotated[str, "用户主页URL"]
+) -> str:
+    """
+    导出小红书用户信息
+    :param userUrl: 用户主页URL
+    :return: 用户信息文本
+    """
+    result = await dump_user.dumpUser(userUrl)
     return result
 
 @mcp.tool()
