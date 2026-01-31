@@ -30,21 +30,27 @@ async def dumpUser(userUrl: str) -> str:
             re.DOTALL
         )
 
+        data = {}
         if match:
             json_str = match.group(1)
-            data = json.loads(json_str)
-            print(data['user'])
-
-        try:
-            # 无限等待，直到页面被关闭
-            await page.wait_for_event("close", timeout=0)
-        except Exception as e:
-            print(f"等待过程中断: {e}")
-        finally:
-            await context.close()
-            await browser.close()
-            
-        return html
+            cleaned_str = re.sub(r'\bundefined\b', 'null', json_str)
+            data = json.loads(cleaned_str)
+          
+        user_info = data.get('user', {}).get('userInfo', {})
+        if not user_info:
+            return "❌ 未能提取到用户信息，请检查URL或登录状态"
+        nickname = user_info.get('nickname', '未知用户')
+        desc = user_info.get('desc', '无简介')
+        
+        user_page_data = data.get('user', {}).get('userPageData', {})
+        tags = user_page_data.get('tags', [])
+        tag_list = [tag.get('name', '') for tag in tags]
+        
+        interactions = user_page_data.get('interactions', {})
+        interactions_info = [interaction['name'] + ":" + interaction['count'] for interaction in interactions]
+        
+        result = f"📋 用户信息:\n昵称: {nickname}\n简介: {desc}\n标签: {', '.join(tag_list)}\n互动信息: {', '.join(interactions_info)}"
+        return result   
     
 if __name__ == "__main__":
     url='https://www.xiaohongshu.com/user/profile/63d944e20000000026012158?xsec_token=AB9u7T-ZtG7Qt-PFS7HbIfqFCZcnXEUI4baNtc9ac9de4=&xsec_source=pc_note'
