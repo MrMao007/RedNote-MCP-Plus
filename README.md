@@ -60,7 +60,7 @@ npx @modelcontextprotocol/inspector uvx rednote_mcp_plus
 
 如果一切顺利的话，现在你就可以看到如图所示列出的所有工具了，接下来你可以随意试用感兴趣的MCP工具了！
 
-![MCP工具列表](img/mcp_tools.png "MCP工具列表")
+![MCP工具列表](docs/img/mcp_tools.png "MCP工具列表")
 
 > ⚠️ **注意：** 请务必先使用manualLogin工具登录小红书后再体验其他工具！
 
@@ -68,7 +68,7 @@ npx @modelcontextprotocol/inspector uvx rednote_mcp_plus
 
 图中展示了获取笔记内容的结果，包含了标题、作者、图文/视频、正文、标签、互动数据、发布时间、发布地点等数据。
 
-![小红书笔记](img/note.png "小红书笔记")
+![小红书笔记](docs/img/note.png "小红书笔记")
 
 ## MCP服务器配置
 
