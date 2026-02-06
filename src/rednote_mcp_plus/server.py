@@ -23,8 +23,6 @@ async def likeNote(
 ) -> str:
     """
     点赞小红书笔记
-    :param noteUrl: 笔记URL
-    :return: 点赞结果
     """
     result = await interaction.likeNote(noteUrl)
     return result
@@ -35,8 +33,6 @@ async def collectNote(
 ) -> str:
     """
     收藏小红书笔记
-    :param noteUrl: 笔记URL
-    :return: 收藏结果
     """
     result = await interaction.collectNote(noteUrl)
     return result
@@ -48,9 +44,6 @@ async def commentNote(
 ) -> str:
     """
     评论小红书笔记
-    :param noteUrl: 笔记URL
-    :param commentText: 评论内容
-    :return: 评论结果
     """
     result = await interaction.commentNote(noteUrl, commentText)
     return result
@@ -61,8 +54,6 @@ async def followUser(
 ) -> str:
     """
     关注小红书用户
-    :param noteUrl: 笔记URL
-    :return: 关注结果
     """
     result = await interaction.followUser(noteUrl)
     return result
@@ -70,17 +61,12 @@ async def followUser(
 @mcp.tool()
 async def searchNotes(
     keyWord: Annotated[str, "搜索关键词"],
-    topN: Annotated[int, "返回前N个结果,不大于10"],
-    dump: Annotated[bool, "是否导出为Markdown文件"]
-) -> str:
+    topN: Annotated[int, "返回前N个结果,不大于10"]
+) -> List[str]:
     """
-    搜索小红书笔记
-    :param keyWord: 搜索关键词
-    :param topN: 返回前N个结果,不大于10
-    :param dump: 是否导出为Markdown文件
-    :return: 搜索结果的Markdown内容
+    搜索小红书笔记,返回笔记URL列表
     """
-    result = await search.search(keyWord, topN, dump)
+    result = await search.search(keyWord, topN)
     return result
 
 @mcp.tool()
@@ -89,8 +75,6 @@ async def dumpNote(
 ) -> str:
     """
     导出小红书笔记内容
-    :param noteUrl: 笔记URL
-    :return: 笔记的Markdown内容
     """
     result = await dump.dumpNote(noteUrl)
     return result
@@ -101,8 +85,6 @@ async def dumpUser(
 ) -> str:
     """
     导出小红书用户信息
-    :param userUrl: 用户主页URL
-    :return: 用户信息文本
     """
     result = await dump_user.dumpUser(userUrl)
     return result
@@ -116,11 +98,6 @@ async def publishText(
 ) -> str:
     """
     发布小红书图文笔记
-    :param image_urls: 图片URL列表
-    :param title: 笔记标题
-    :param content: 笔记内容
-    :param tags: 标签列表
-    :return: 发布结果
     """
     result = await publish.publishText(image_urls, title, content, tags)
     return result
