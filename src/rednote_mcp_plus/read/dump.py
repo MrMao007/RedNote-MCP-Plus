@@ -7,7 +7,6 @@ from datetime import datetime
 async def dumpNote(noteUrl: str) -> str:
     """
     导出小红书笔记内容
-    :param noteUrl: 笔记URL
     """
     async with async_playwright() as playwright:
         browser = await playwright.chromium.launch(headless=False)

@@ -7,7 +7,6 @@ from datetime import datetime
 async def dumpUser(userUrl: str) -> str:
     """
     导出小红书用户信息
-    :param userUrl: 用户主页URL
     """
     async with async_playwright() as playwright:
         browser = await playwright.chromium.launch(headless=False)
