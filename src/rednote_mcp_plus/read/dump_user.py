@@ -9,7 +9,7 @@ async def dumpUser(userUrl: str) -> str:
     导出小红书用户信息
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto(userUrl)
@@ -54,3 +54,4 @@ async def dumpUser(userUrl: str) -> str:
 if __name__ == "__main__":
     url='https://www.xiaohongshu.com/user/profile/63d944e20000000026012158?xsec_token=AB9u7T-ZtG7Qt-PFS7HbIfqFCZcnXEUI4baNtc9ac9de4=&xsec_source=pc_note'
     result = asyncio.run(dumpUser(url))
+    print(result)

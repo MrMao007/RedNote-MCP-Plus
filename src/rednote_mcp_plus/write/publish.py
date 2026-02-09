@@ -28,7 +28,7 @@ async def publishText(image_urls: List[str], title: str, content: str, tags: Lis
     rednoteArticle = RednoteArticle(title, content, tags, image_urls)
     
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto("https://www.xiaohongshu.com/explore")

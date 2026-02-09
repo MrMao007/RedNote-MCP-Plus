@@ -9,7 +9,7 @@ async def likeNote(noteUrl: str) -> str:
     :param noteUrl: 笔记URL
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto(noteUrl)
@@ -32,7 +32,7 @@ async def collectNote(noteUrl: str) -> str:
     :param noteUrl: 笔记URL
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto(noteUrl)
@@ -56,7 +56,7 @@ async def commentNote(noteUrl: str, commentText: str) -> str:
     :param commentText: 评论内容
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto(noteUrl)
@@ -81,7 +81,7 @@ async def followUser(noteUrl: str) -> str:
     :param noteUrl: 笔记URL
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto(noteUrl)

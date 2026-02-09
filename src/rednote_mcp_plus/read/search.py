@@ -9,7 +9,7 @@ async def search(keyWord: str, topN: int) -> list[str]:
     搜索小红书笔记
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto("https://www.xiaohongshu.com/search_result?keyword=" + keyWord)
@@ -44,5 +44,5 @@ async def search(keyWord: str, topN: int) -> list[str]:
         
 
 if __name__ == "__main__":
-    result = asyncio.run(search("测试", 5, True))
+    result = asyncio.run(search("测试", 5))
     print(result)

@@ -45,8 +45,24 @@ async def manualLogin() -> str:
         
         return "✅ 登录流程完成，Cookies已保存"
 
+async def validate_cookies() -> bool:
+    """验证保存的cookies是否有效"""
+    async with async_playwright() as playwright:
+        browser = await playwright.chromium.launch(headless=True)
+        context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
+        page = await context.new_page()
+        await page.goto("https://www.xiaohongshu.com/explore")
+        
+        # 检查是否登录成功
+        login_button = page.locator("form").get_by_role("button", name="登录")
+        need_login = not await login_button.is_visible()
+        
+        await context.close()
+        await browser.close()
+        
+        return not need_login
 
 
 if __name__ == "__main__":
-    result = asyncio.run(manualLogin())
+    result = asyncio.run(validate_cookies())
     print(result) 

@@ -9,7 +9,7 @@ async def dumpNote(noteUrl: str) -> str:
     导出小红书笔记内容
     """
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=False)
+        browser = await playwright.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto(noteUrl)
