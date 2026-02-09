@@ -1,7 +1,5 @@
 import asyncio
-from math import log
 import os
-from re import A
 from playwright.async_api import async_playwright
 
 async def save_cookies(context):
@@ -48,19 +46,19 @@ async def manualLogin() -> str:
 async def validate_cookies() -> bool:
     """验证保存的cookies是否有效"""
     async with async_playwright() as playwright:
-        browser = await playwright.chromium.launch(headless=True)
+        browser = await playwright.chromium.launch(headless=False)
         context = await browser.new_context(storage_state="src/rednote_mcp_plus/cookie/rednote_cookies.json")
         page = await context.new_page()
         await page.goto("https://www.xiaohongshu.com/explore")
         
         # 检查是否登录成功
         login_button = page.locator("form").get_by_role("button", name="登录")
-        need_login = not await login_button.is_visible()
+        is_login = not await login_button.is_visible()
         
         await context.close()
         await browser.close()
         
-        return not need_login
+        return is_login
 
 
 if __name__ == "__main__":
